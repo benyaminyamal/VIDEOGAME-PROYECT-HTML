@@ -4,14 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TodoJuegos</title>
+        <link rel="stylesheet" href="estilos.css">
     </head>
     <body>
-        <header>
+        <!-- Paso 2: cabecera con el nombre de la tienda y una descripción breve -->
+        <header class="cabecera">
             <h1>TodoJuegos</h1>
             <p>Tienda de videojuegos contemporáneos donde puedes encontrar todo lo que necesitas para disfrutar al máximo.</p>
         </header>
 
-        <nav>
+        <!-- Paso 3: menú de navegación con una lista de enlaces -->
+        <nav class="menu">
             <ul>
                 <li><a href="inicio.html">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
@@ -19,27 +22,29 @@
             </ul>
         </nav>
 
+        <!-- Paso 4: sección principal con productos destacados -->
         <section id="productos">
             <h2>Productos destacados</h2>
-            <ul>
-                <li>
+            <ul class="lista-productos">
+                <li class="producto">
                     <h3>The Legend of Zelda: Tears of the Kingdom</h3>
                     <img src="https://www.gaming.net/wp-content/uploads/2023/05/link____zelda_tears_of_the_kingdom_wallpaper_by_dinocozero_dfwu0y8-pre.jpg" alt="Portada de The Legend of Zelda: Tears of the Kingdom">
                     <p>Aventura de mundo abierto en Hyrule. Explora, construye y descubre secretos.</p>
                 </li>
-                <li>
+                <li class="producto">
                     <h3>Elden Ring</h3>
-                    <img src="https://fwmedia.fandomwire.com/wp-content/uploads/2024/10/09001954/elden-ring-edited-1152x648.png" alt="Portada de Elden Ring">
+                    <img src="https://placehold.co/200x250?text=Elden+Ring" alt="Portada de Elden Ring">
                     <p>RPG de acción con un mundo vasto, combates exigentes y libertad para explorar.</p>
                 </li>
-                <li>
+                <li class="producto">
                     <h3>God of War Ragnarök</h3>
-                    <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/12/mixcollage-08-dec-2024-01-22-pm-530.jpg" alt="Portada de God of War Ragnarök">
+                    <img src="https://placehold.co/200x250?text=God+of+War" alt="Portada de God of War Ragnarök">
                     <p>Kratos y Atreus enfrentan el fin de los dioses nórdicos en una historia intensa.</p>
                 </li>
             </ul>
         </section>
 
+        <!-- Paso 5: pie de página con datos de contacto y redes sociales -->
         <footer id="contacto">
             <p>TodoJuegos — Av. Providencia 1234, Santiago, Chile</p>
             <p>Teléfono: +56 9 1234 5678 | Correo: contacto@todojuegos.cl</p>
