@@ -4,7 +4,7 @@
     "nombre": "The Legend of Zelda: Tears of the Kingdom",
     "categoria": "Aventura",
     "precio": 59990,
-    "imagen": "https://www.gaming.net/wp-content/uploads/2023/05/link____zelda_tears_of_the_kingdom_wallpaper_by_dinocozero_dfwu0y8-pre.jpg",
+    "imagen": "assets/img/zelda-totk.jpg",
     "descripcion": "Aventura de mundo abierto en Hyrule. Explora, construye y descubre secretos."
   },
   {
@@ -12,7 +12,7 @@
     "nombre": "Elden Ring",
     "categoria": "RPG",
     "precio": 44990,
-    "imagen": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_600x900.jpg",
+    "imagen": "assets/img/elden-ring.jpg",
     "descripcion": "RPG de acción con un mundo vasto, combates exigentes y libertad para explorar."
   },
   {
@@ -20,7 +20,7 @@
     "nombre": "God of War Ragnarök",
     "categoria": "Acción",
     "precio": 49990,
-    "imagen": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/library_600x900.jpg",
+    "imagen": "assets/img/god-of-war.jpg",
     "descripcion": "Kratos y Atreus enfrentan el fin de los dioses nórdicos en una historia intensa."
   },
   {
@@ -28,7 +28,7 @@
     "nombre": "Baldur's Gate 3",
     "categoria": "RPG",
     "precio": 54990,
-    "imagen": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/library_600x900.jpg",
+    "imagen": "assets/img/baldurs-gate-3.jpg",
     "descripcion": "RPG por turnos basado en Dungeons & Dragons, con decisiones que cambian la historia."
   },
   {
@@ -36,7 +36,7 @@
     "nombre": "Marvel's Spider-Man 2",
     "categoria": "Acción",
     "precio": 52990,
-    "imagen": "https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/library_600x900.jpg",
+    "imagen": "assets/img/spider-man-2.jpg",
     "descripcion": "Balancéate por Nueva York con Peter y Miles en una aventura llena de acción."
   },
   {
@@ -44,7 +44,7 @@
     "nombre": "Hollow Knight",
     "categoria": "Aventura",
     "precio": 14990,
-    "imagen": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/library_600x900.jpg",
+    "imagen": "assets/img/hollow-knight.jpg",
     "descripcion": "Metroidvania de exploración con un mundo subterráneo enorme y desafiante."
   }
 ]
