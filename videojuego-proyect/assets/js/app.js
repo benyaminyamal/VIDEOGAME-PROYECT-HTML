@@ -1,31 +1,8 @@
-/* =====================================================================
-   TodoJuegos — Lógica de la tienda con JavaScript
-   ---------------------------------------------------------------------
-   El código está dividido en funciones claras y reutilizables:
-     1. Estado y utilidades (formato de precios).
-     2. Carga de datos con Fetch API (+ manejo de errores).
-     3. Renderizado dinámico de productos en el DOM.
-     4. Filtros por categoría y búsqueda (eventos submit/click).
-     5. Carrito de compras (agregar, resumir, vaciar).
-   ===================================================================== */
-
-
-/* ---------------------------------------------------------------------
-   1) ESTADO GLOBAL Y UTILIDADES
-   --------------------------------------------------------------------- */
-
-// Guardamos los productos cargados desde el JSON para poder filtrarlos
-// sin tener que volver a pedirlos al servidor.
+// Estado de la aplicacion
 let productos = [];
-
-// El carrito es un arreglo de objetos { producto, cantidad }.
 let carrito = [];
 
-/**
- * Da formato de precio en pesos chilenos (CLP).
- * @param {number} valor - Monto numérico, por ejemplo 59990.
- * @returns {string} Precio formateado, por ejemplo "$59.990".
- */
+// Da formato de precio en pesos chilenos
 function formatearPrecio(valor) {
     return valor.toLocaleString("es-CL", {
         style: "currency",
@@ -34,78 +11,51 @@ function formatearPrecio(valor) {
     });
 }
 
-
-/* ---------------------------------------------------------------------
-   2) CARGA DE DATOS EXTERNA CON FETCH API
-   --------------------------------------------------------------------- */
-
-/**
- * Carga la lista de productos desde el archivo JSON local usando Fetch API.
- * Gestiona los errores mostrando un mensaje amigable si algo falla.
- */
+// Carga los productos desde el JSON local con Fetch API
 async function cargarProductos() {
     mostrarMensaje("Cargando productos...", "info");
 
     try {
         const respuesta = await fetch("productos.json");
 
-        // fetch() no lanza error con códigos HTTP como 404; hay que revisarlo.
         if (!respuesta.ok) {
-            throw new Error("No se pudo cargar el archivo (código " + respuesta.status + ")");
+            throw new Error("No se pudo cargar el archivo (codigo " + respuesta.status + ")");
         }
 
         productos = await respuesta.json();
-
         ocultarMensaje();
-        renderizarProductos(productos); // Mostramos los productos en pantalla
+        renderizarProductos(productos);
     } catch (error) {
-        // Mensaje amigable para el usuario + detalle técnico en consola.
         console.error("Error al cargar productos:", error);
         mostrarMensaje(
-            "😕 No pudimos cargar los productos en este momento. " +
-            "Revisa tu conexión e inténtalo nuevamente más tarde.",
+            "No pudimos cargar los productos en este momento. " +
+            "Revisa tu conexion e intentalo nuevamente mas tarde.",
             "danger"
         );
     }
 }
 
-/**
- * Muestra un mensaje de estado (carga, error, sin resultados) al usuario.
- * @param {string} texto - Texto a mostrar.
- * @param {string} tipo  - Tipo de alerta Bootstrap: info, danger, warning...
- */
 function mostrarMensaje(texto, tipo) {
     const caja = document.getElementById("mensajeEstado");
     caja.textContent = texto;
-    caja.className = "alert alert-" + tipo; // reinicia clases y aplica el tipo
+    caja.className = "alert alert-" + tipo;
 }
 
-/** Oculta el mensaje de estado. */
 function ocultarMensaje() {
     document.getElementById("mensajeEstado").className = "alert d-none";
 }
 
-
-/* ---------------------------------------------------------------------
-   3) RENDERIZADO DINÁMICO DE PRODUCTOS EN EL DOM
-   --------------------------------------------------------------------- */
-
-/**
- * Dibuja las tarjetas de producto dentro del grid de la página.
- * @param {Array} lista - Arreglo de productos a mostrar.
- */
+// Dibuja las tarjetas de producto en el grid
 function renderizarProductos(lista) {
     const contenedor = document.getElementById("listaProductos");
-    contenedor.innerHTML = ""; // Limpiamos antes de volver a dibujar
+    contenedor.innerHTML = "";
 
-    // Si no hay coincidencias (por ejemplo, tras una búsqueda) avisamos.
     if (lista.length === 0) {
         mostrarMensaje("No se encontraron juegos con esos criterios.", "warning");
         return;
     }
     ocultarMensaje();
 
-    // Creamos una tarjeta (columna Bootstrap) por cada producto.
     lista.forEach(function (producto) {
         const columna = document.createElement("div");
         columna.className = "col-12 col-sm-6 col-lg-4";
@@ -133,43 +83,24 @@ function renderizarProductos(lista) {
         contenedor.appendChild(columna);
     });
 
-    // EVENTO CLICK: enlazamos el botón "Agregar" de cada tarjeta al carrito.
     contenedor.querySelectorAll(".btn-agregar").forEach(function (boton) {
         boton.addEventListener("click", function () {
-            const id = Number(this.dataset.id);
-            agregarAlCarrito(id);
+            agregarAlCarrito(Number(this.dataset.id));
         });
     });
 }
 
-
-/* ---------------------------------------------------------------------
-   4) FILTROS: CATEGORÍAS (click) Y BÚSQUEDA (submit)
-   --------------------------------------------------------------------- */
-
-/**
- * Filtra los productos por categoría al hacer click en el menú.
- * @param {string} categoria - "todos" o el nombre de la categoría.
- */
 function filtrarPorCategoria(categoria) {
     if (categoria === "todos") {
         renderizarProductos(productos);
     } else {
-        const filtrados = productos.filter(function (p) {
-            return p.categoria === categoria;
-        });
-        renderizarProductos(filtrados);
+        renderizarProductos(productos.filter(p => p.categoria === categoria));
     }
 }
 
-/**
- * Filtra los productos según el texto escrito en el buscador.
- * @param {string} texto - Texto de búsqueda.
- */
 function buscarProductos(texto) {
     const termino = texto.trim().toLowerCase();
 
-    // Si el campo está vacío mostramos todo el catálogo.
     if (termino === "") {
         renderizarProductos(productos);
         return;
@@ -181,23 +112,12 @@ function buscarProductos(texto) {
     renderizarProductos(resultados);
 }
 
-
-/* ---------------------------------------------------------------------
-   5) CARRITO DE COMPRAS
-   --------------------------------------------------------------------- */
-
-/**
- * Agrega un producto al carrito (o suma cantidad si ya existe).
- * @param {number} id - Identificador del producto a agregar.
- */
+// Agrega un producto al carrito o suma cantidad si ya existe
 function agregarAlCarrito(id) {
-    const producto = productos.find(function (p) { return p.id === id; });
+    const producto = productos.find(p => p.id === id);
     if (!producto) return;
 
-    // ¿Ya está en el carrito? Si es así, aumentamos su cantidad.
-    const itemExistente = carrito.find(function (item) {
-        return item.producto.id === id;
-    });
+    const itemExistente = carrito.find(item => item.producto.id === id);
 
     if (itemExistente) {
         itemExistente.cantidad++;
@@ -205,50 +125,35 @@ function agregarAlCarrito(id) {
         carrito.push({ producto: producto, cantidad: 1 });
     }
 
-    actualizarCarrito(); // Refrescamos el resumen y el contador
-}
-
-/**
- * Elimina por completo un producto del carrito.
- * @param {number} id - Identificador del producto a quitar.
- */
-function eliminarDelCarrito(id) {
-    carrito = carrito.filter(function (item) {
-        return item.producto.id !== id;
-    });
     actualizarCarrito();
 }
 
-/** Vacía todo el carrito de una sola vez. */
+function eliminarDelCarrito(id) {
+    carrito = carrito.filter(item => item.producto.id !== id);
+    actualizarCarrito();
+}
+
 function vaciarCarrito() {
     carrito = [];
     actualizarCarrito();
 }
 
-/**
- * Recalcula y vuelve a dibujar el resumen del carrito, el total
- * y el contador de la barra de navegación.
- */
+// Vuelve a dibujar el resumen del carrito y el total
 function actualizarCarrito() {
     const resumen = document.getElementById("resumenCarrito");
     const contador = document.getElementById("contadorCarrito");
     const totalEl = document.getElementById("totalCarrito");
 
-    // Contador = suma de todas las cantidades.
-    const totalUnidades = carrito.reduce(function (acc, item) {
-        return acc + item.cantidad;
-    }, 0);
+    const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0);
     contador.textContent = totalUnidades;
 
-    // Carrito vacío: mostramos un mensaje y salimos.
     if (carrito.length === 0) {
         resumen.innerHTML =
-            '<p class="text-center text-secondary mt-4">Tu carrito está vacío.</p>';
+            '<p class="text-center text-secondary mt-4">Tu carrito esta vacio.</p>';
         totalEl.textContent = formatearPrecio(0);
         return;
     }
 
-    // Dibujamos cada línea del carrito.
     let html = "";
     let total = 0;
 
@@ -261,7 +166,7 @@ function actualizarCarrito() {
                 <div>
                     <p class="mb-0 fw-semibold small">${item.producto.nombre}</p>
                     <small class="text-secondary">
-                        ${item.cantidad} × ${formatearPrecio(item.producto.precio)}
+                        ${item.cantidad} x ${formatearPrecio(item.producto.precio)}
                     </small>
                 </div>
                 <div class="text-end">
@@ -278,7 +183,6 @@ function actualizarCarrito() {
     resumen.innerHTML = html;
     totalEl.textContent = formatearPrecio(total);
 
-    // EVENTO CLICK: botones de "quitar" de cada línea del carrito.
     resumen.querySelectorAll(".btn-quitar").forEach(function (boton) {
         boton.addEventListener("click", function () {
             eliminarDelCarrito(Number(this.dataset.id));
@@ -286,46 +190,27 @@ function actualizarCarrito() {
     });
 }
 
-
-/* ---------------------------------------------------------------------
-   6) INICIALIZACIÓN Y REGISTRO DE EVENTOS
-   --------------------------------------------------------------------- */
-
-/**
- * Configura todos los eventos de la página una vez cargado el DOM.
- */
+// Configuracion de eventos al cargar la pagina
 function inicializar() {
-    // Cargamos los productos desde el JSON.
     cargarProductos();
 
-    // EVENTO SUBMIT: formulario de búsqueda.
     document.getElementById("formBusqueda").addEventListener("submit", function (e) {
-        e.preventDefault(); // Evitamos que la página se recargue
-        const texto = document.getElementById("inputBusqueda").value;
-        buscarProductos(texto);
+        e.preventDefault();
+        buscarProductos(document.getElementById("inputBusqueda").value);
     });
 
-    // EVENTO CLICK: enlaces de categoría en la barra de navegación.
     document.querySelectorAll(".filtro-categoria").forEach(function (enlace) {
         enlace.addEventListener("click", function (e) {
             e.preventDefault();
-
-            // Marcamos visualmente la categoría activa.
-            document.querySelectorAll(".filtro-categoria").forEach(function (a) {
-                a.classList.remove("active");
-            });
+            document.querySelectorAll(".filtro-categoria").forEach(a => a.classList.remove("active"));
             this.classList.add("active");
-
             filtrarPorCategoria(this.dataset.categoria);
         });
     });
 
-    // EVENTO CLICK: botón para vaciar el carrito.
     document.getElementById("btnVaciar").addEventListener("click", vaciarCarrito);
 
-    // Dejamos el carrito con su estado inicial (vacío).
     actualizarCarrito();
 }
 
-// Ejecutamos la inicialización cuando el DOM esté completamente cargado.
 document.addEventListener("DOMContentLoaded", inicializar);

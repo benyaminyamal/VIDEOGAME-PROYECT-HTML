@@ -1,11 +1,4 @@
-/* =====================================================================
-   TodoJuegos — Estilos propios
-   Complementan a Bootstrap 5 aplicando la paleta oscura/morada.
-   Bootstrap se encarga de la maquetación responsiva; aquí solo
-   ajustamos colores, bordes y detalles visuales de la marca.
-   ===================================================================== */
-
-/* Paleta de colores reutilizable mediante variables CSS */
+/* Paleta de colores del sitio */
 :root {
     --fondo:        #12121a;
     --fondo-panel:  #1b1b2f;
@@ -24,9 +17,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ============================================
-   BARRA DE NAVEGACIÓN
-   ============================================ */
+/* Barra de navegacion */
 .navbar {
     background-color: var(--fondo-panel);
     border-bottom: 4px solid var(--morado);
@@ -50,7 +41,6 @@ body {
     color: #fff;
 }
 
-/* Botón del carrito en la navbar */
 .btn-carrito {
     color: var(--morado-claro);
     border: 1px solid var(--morado-borde);
@@ -60,9 +50,7 @@ body {
     color: #fff;
 }
 
-/* ============================================
-   CABECERA / HERO
-   ============================================ */
+/* Cabecera */
 .hero {
     background: linear-gradient(135deg, #1b1b2f 0%, #2e1064 100%);
     border-bottom: 4px solid var(--morado);
@@ -72,16 +60,13 @@ body {
     color: var(--morado-claro);
 }
 
-/* ============================================
-   SECCIÓN DE PRODUCTOS
-   ============================================ */
+/* Productos */
 .titulo-seccion {
     color: var(--morado-claro);
     padding-bottom: .5rem;
     border-bottom: 2px solid var(--morado);
 }
 
-/* Tarjetas de producto (componente card de Bootstrap) */
 .card-producto {
     background-color: var(--fondo-card);
     border: 2px solid var(--morado-borde);
@@ -108,13 +93,11 @@ body {
     font-size: 1.1rem;
 }
 
-/* Etiqueta de categoría */
 .badge-categoria {
     background-color: var(--morado-borde);
     color: var(--morado-claro);
 }
 
-/* Botón "Agregar al carrito" */
 .btn-agregar {
     background-color: var(--morado);
     color: #fff;
@@ -125,9 +108,7 @@ body {
     color: #fff;
 }
 
-/* ============================================
-   PANEL LATERAL DEL CARRITO (offcanvas)
-   ============================================ */
+/* Carrito */
 .offcanvas {
     background-color: var(--fondo-panel);
     color: var(--texto);
@@ -154,9 +135,7 @@ body {
     color: #fff;
 }
 
-/* ============================================
-   PIE DE PÁGINA
-   ============================================ */
+/* Pie de pagina */
 #contacto {
     background-color: #0f0f18;
     color: #9ca3af;
