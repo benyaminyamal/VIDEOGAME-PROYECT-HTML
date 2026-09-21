@@ -1,0 +1,175 @@
+/* =====================================================================
+   TodoJuegos — Estilos propios
+   Complementan a Bootstrap 5 aplicando la paleta oscura/morada.
+   Bootstrap se encarga de la maquetación responsiva; aquí solo
+   ajustamos colores, bordes y detalles visuales de la marca.
+   ===================================================================== */
+
+/* Paleta de colores reutilizable mediante variables CSS */
+:root {
+    --fondo:        #12121a;
+    --fondo-panel:  #1b1b2f;
+    --fondo-card:   #252542;
+    --morado:       #7c3aed;
+    --morado-claro: #c4b5fd;
+    --morado-borde: #4c1d95;
+    --texto:        #e8e8e8;
+    --texto-suave:  #d1d5db;
+    --amarillo:     #fbbf24;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================================
+   BARRA DE NAVEGACIÓN
+   ============================================ */
+.navbar {
+    background-color: var(--fondo-panel);
+    border-bottom: 4px solid var(--morado);
+}
+
+.navbar-brand {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--morado-claro) !important;
+    font-size: 1.6rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--texto-suave);
+    border-radius: 6px;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    background-color: var(--morado);
+    color: #fff;
+}
+
+/* Botón del carrito en la navbar */
+.btn-carrito {
+    color: var(--morado-claro);
+    border: 1px solid var(--morado-borde);
+}
+.btn-carrito:hover {
+    background-color: var(--morado);
+    color: #fff;
+}
+
+/* ============================================
+   CABECERA / HERO
+   ============================================ */
+.hero {
+    background: linear-gradient(135deg, #1b1b2f 0%, #2e1064 100%);
+    border-bottom: 4px solid var(--morado);
+}
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--morado-claro);
+}
+
+/* ============================================
+   SECCIÓN DE PRODUCTOS
+   ============================================ */
+.titulo-seccion {
+    color: var(--morado-claro);
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--morado);
+}
+
+/* Tarjetas de producto (componente card de Bootstrap) */
+.card-producto {
+    background-color: var(--fondo-card);
+    border: 2px solid var(--morado-borde);
+    border-top: 4px solid var(--morado);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.card-producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, .35);
+}
+.card-producto .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--morado);
+}
+.card-producto .card-title {
+    color: #fff;
+}
+.card-producto .card-text {
+    color: var(--texto-suave);
+}
+.precio {
+    color: var(--amarillo);
+    font-size: 1.1rem;
+}
+
+/* Etiqueta de categoría */
+.badge-categoria {
+    background-color: var(--morado-borde);
+    color: var(--morado-claro);
+}
+
+/* Botón "Agregar al carrito" */
+.btn-agregar {
+    background-color: var(--morado);
+    color: #fff;
+    border: none;
+}
+.btn-agregar:hover {
+    background-color: #6d28d9;
+    color: #fff;
+}
+
+/* ============================================
+   PANEL LATERAL DEL CARRITO (offcanvas)
+   ============================================ */
+.offcanvas {
+    background-color: var(--fondo-panel);
+    color: var(--texto);
+}
+.item-carrito {
+    border-bottom: 1px solid var(--morado-borde);
+}
+.btn-quitar {
+    color: #f87171;
+    border: none;
+    background: transparent;
+}
+.btn-quitar:hover {
+    color: #fff;
+    background-color: #dc2626;
+}
+.btn-comprar {
+    background-color: var(--morado);
+    color: #fff;
+    border: none;
+}
+.btn-comprar:hover {
+    background-color: #6d28d9;
+    color: #fff;
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+#contacto {
+    background-color: #0f0f18;
+    color: #9ca3af;
+    border-top: 4px solid var(--morado);
+    font-size: .9rem;
+}
+#contacto a {
+    color: var(--morado-claro);
+    text-decoration: none;
+    padding: 2px 6px;
+}
+#contacto a:hover {
+    color: #fff;
+    background-color: var(--morado);
+    border-radius: 4px;
+}
