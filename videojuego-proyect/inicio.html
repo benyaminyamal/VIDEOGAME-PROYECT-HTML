@@ -1,59 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TodoJuegos</title>
-        <link rel="stylesheet" href="estilos.css">
-    </head>
-    <body>
-        <!-- Paso 2: cabecera con el nombre de la tienda y una descripción breve -->
-        <header class="cabecera">
-            <h1>TodoJuegos</h1>
-            <p>Tienda de videojuegos contemporáneos donde puedes encontrar todo lo que necesitas para disfrutar al máximo.</p>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoJuegos — Bienvenido</title>
 
-        <!-- Paso 3: menú de navegación con una lista de enlaces -->
-        <nav class="menu">
-            <ul>
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <!-- Bootstrap 5 (CSS) desde CDN -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
 
-        <!-- Paso 4: sección principal con productos destacados -->
-        <section id="productos">
-            <h2>Productos destacados</h2>
-            <ul class="lista-productos">
-                <li class="producto">
-                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
-                    <img src="https://www.gaming.net/wp-content/uploads/2023/05/link____zelda_tears_of_the_kingdom_wallpaper_by_dinocozero_dfwu0y8-pre.jpg" alt="Portada de The Legend of Zelda: Tears of the Kingdom">
-                    <p>Aventura de mundo abierto en Hyrule. Explora, construye y descubre secretos.</p>
-                </li>
-                <li class="producto">
-                    <h3>Elden Ring</h3>
-                    <img src="https://placehold.co/200x250?text=Elden+Ring" alt="Portada de Elden Ring">
-                    <p>RPG de acción con un mundo vasto, combates exigentes y libertad para explorar.</p>
-                </li>
-                <li class="producto">
-                    <h3>God of War Ragnarök</h3>
-                    <img src="https://placehold.co/200x250?text=God+of+War" alt="Portada de God of War Ragnarök">
-                    <p>Kratos y Atreus enfrentan el fin de los dioses nórdicos en una historia intensa.</p>
-                </li>
-            </ul>
-        </section>
+    <!-- Barra de navegación (misma marca y estilo que la tienda) -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="inicio.html">
+                <i class="bi bi-controller"></i> TodoJuegos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menu" aria-controls="menu"
+                    aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="inicio.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Paso 5: pie de página con datos de contacto y redes sociales -->
-        <footer id="contacto">
-            <p>TodoJuegos — Av. Providencia 1234, Santiago, Chile</p>
-            <p>Teléfono: +56 9 1234 5678 | Correo: contacto@todojuegos.cl</p>
-            <p>
-                Síguenos:
-                <a href="https://instagram.com" target="_blank">Instagram</a> |
-                <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a href="https://twitter.com" target="_blank">X (Twitter)</a>
+    <!-- Sección de bienvenida -->
+    <header class="hero text-center text-white py-5">
+        <div class="container py-5">
+            <h1 class="display-3 fw-bold mb-3">Bienvenido a TodoJuegos</h1>
+            <p class="lead mx-auto mb-4" style="max-width: 700px;">
+                Tienda de videojuegos contemporáneos donde puedes encontrar todo
+                lo que necesitas para disfrutar al máximo.
             </p>
-        </footer>
-    </body>
+            <a href="index.html" class="btn btn-comprar btn-lg">
+                <i class="bi bi-controller"></i> Ir a la tienda
+            </a>
+        </div>
+    </header>
+
+    <!-- Bloques informativos -->
+    <main class="container my-5">
+        <div class="row g-4 text-center">
+            <div class="col-12 col-md-4">
+                <div class="card card-producto h-100 p-4">
+                    <i class="bi bi-truck fs-1 mb-3" style="color: var(--morado-claro);"></i>
+                    <h2 class="h5">Envío rápido</h2>
+                    <p class="card-text">Recibe tus juegos favoritos en todo Chile.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card card-producto h-100 p-4">
+                    <i class="bi bi-shield-check fs-1 mb-3" style="color: var(--morado-claro);"></i>
+                    <h2 class="h5">Compra segura</h2>
+                    <p class="card-text">Pagos protegidos y productos garantizados.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card card-producto h-100 p-4">
+                    <i class="bi bi-stars fs-1 mb-3" style="color: var(--morado-claro);"></i>
+                    <h2 class="h5">Los mejores títulos</h2>
+                    <p class="card-text">Catálogo actualizado con los juegos más populares.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto" class="text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-1">TodoJuegos — Av. Providencia 1234, Santiago, Chile</p>
+            <p class="mb-2">Teléfono: +56 9 1234 5678 | Correo: contacto@todojuegos.cl</p>
+            <p class="mb-0">
+                Síguenos:
+                <a href="https://instagram.com" target="_blank" rel="noopener">
+                    <i class="bi bi-instagram"></i> Instagram</a> |
+                <a href="https://facebook.com" target="_blank" rel="noopener">
+                    <i class="bi bi-facebook"></i> Facebook</a> |
+                <a href="https://twitter.com" target="_blank" rel="noopener">
+                    <i class="bi bi-twitter-x"></i> X (Twitter)</a>
+            </p>
+        </div>
+    </footer>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
 </html>
