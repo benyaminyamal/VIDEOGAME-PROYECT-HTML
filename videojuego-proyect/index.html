@@ -15,123 +15,17 @@
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
+    <!-- La interfaz se monta con React dentro de este contenedor -->
+    <div id="root"></div>
 
-    <!-- Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-3">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="inicio.html">
-                <i class="bi bi-controller"></i> TodoJuegos
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
-                    aria-expanded="false" aria-label="Abrir menú de navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link filtro-categoria active" href="#" data-categoria="todos">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link filtro-categoria" href="#" data-categoria="Acción">Acción</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link filtro-categoria" href="#" data-categoria="RPG">RPG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link filtro-categoria" href="#" data-categoria="Aventura">Aventura</a>
-                    </li>
-                </ul>
-
-                <!-- Buscador -->
-                <form class="d-flex me-lg-3 my-2 my-lg-0" id="formBusqueda" role="search">
-                    <input class="form-control me-2" type="search" id="inputBusqueda"
-                           placeholder="Buscar juego..." aria-label="Buscar">
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
-
-                <button class="btn btn-carrito position-relative" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#carritoPanel">
-                    <i class="bi bi-cart3 fs-5"></i>
-                    <span id="contadorCarrito"
-                          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
-                        0
-                    </span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero text-center text-white py-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold">TodoJuegos</h1>
-            <p class="lead mx-auto" style="max-width: 700px;">
-                Tienda de videojuegos contemporáneos donde puedes encontrar todo
-                lo que necesitas para disfrutar al máximo.
-            </p>
-        </div>
-    </header>
-
-    <!-- Productos (se cargan con JavaScript) -->
-    <main class="container my-5" id="productos">
-        <h2 class="mb-4 titulo-seccion">Productos destacados</h2>
-
-        <div id="mensajeEstado" class="alert d-none" role="alert"></div>
-
-        <div class="row g-4" id="listaProductos"
-             aria-live="polite" aria-label="Lista de productos"></div>
-    </main>
-
-    <!-- Carrito -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="carritoPanel"
-         aria-labelledby="tituloCarrito">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tituloCarrito">
-                <i class="bi bi-cart3"></i> Tu carrito
-            </h5>
-            <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <div id="resumenCarrito" class="flex-grow-1"></div>
-
-            <div class="border-top pt-3 mt-3">
-                <div class="d-flex justify-content-between fs-5 fw-bold mb-3">
-                    <span>Total:</span>
-                    <span id="totalCarrito">$0</span>
-                </div>
-                <button class="btn btn-comprar w-100" id="btnVaciar">
-                    Vaciar carrito
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pie de pagina -->
-    <footer id="contacto" class="text-center py-4 mt-5">
-        <div class="container">
-            <p class="mb-1">TodoJuegos — Av. Providencia 1234, Santiago, Chile</p>
-            <p class="mb-2">Teléfono: +56 9 1234 5678 | Correo: contacto@todojuegos.cl</p>
-            <p class="mb-0">
-                Síguenos:
-                <a href="https://instagram.com" target="_blank" rel="noopener">
-                    <i class="bi bi-instagram"></i> Instagram</a> |
-                <a href="https://facebook.com" target="_blank" rel="noopener">
-                    <i class="bi bi-facebook"></i> Facebook</a> |
-                <a href="https://twitter.com" target="_blank" rel="noopener">
-                    <i class="bi bi-twitter-x"></i> X (Twitter)</a>
-            </p>
-        </div>
-    </footer>
-
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="assets/js/app.js"></script>
+
+    <script type="text/babel" src="assets/js/app.js"></script>
 </body>
 </html>
