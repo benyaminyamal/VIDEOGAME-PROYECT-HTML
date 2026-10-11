@@ -68,10 +68,42 @@ body {
 }
 
 .card-producto {
+    position: relative;
     background-color: var(--fondo-card);
     border: 2px solid var(--morado-borde);
     border-top: 4px solid var(--morado);
     transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* Boton para eliminar un juego del catalogo */
+.btn-eliminar-juego {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(15, 15, 24, .75);
+    color: #f87171;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-eliminar-juego:hover {
+    background: #dc2626;
+    color: #fff;
+}
+
+/* Paneles de formularios (administrar catalogo y contacto) */
+.panel-form {
+    background-color: var(--fondo-card);
+    border: 2px solid var(--morado-borde);
+    border-radius: 8px;
+}
+.panel-form .form-label {
+    color: var(--texto-suave);
 }
 .card-producto:hover {
     transform: translateY(-6px);
@@ -136,18 +168,18 @@ body {
 }
 
 /* Pie de pagina */
-#contacto {
+.pie {
     background-color: #0f0f18;
     color: #9ca3af;
     border-top: 4px solid var(--morado);
     font-size: .9rem;
 }
-#contacto a {
+.pie a {
     color: var(--morado-claro);
     text-decoration: none;
     padding: 2px 6px;
 }
-#contacto a:hover {
+.pie a:hover {
     color: #fff;
     background-color: var(--morado);
     border-radius: 4px;
